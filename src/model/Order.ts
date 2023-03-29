@@ -3,8 +3,8 @@ import{Schema, model } from "mongoose";
 const orderSchema = new Schema(
   {
     table: Number,
-    status: Boolean,
-    draft: Boolean,
+    status:{type: Boolean, default: false},
+    draft: {type: Boolean, default: true},
     name: String
   },
   {
