@@ -1,3 +1,4 @@
+import { Types } from "mongoose";
 import { Order } from "../model/Order";
 
 interface OrderRequest{
@@ -13,6 +14,13 @@ class orderSevice {
      })
 
      return order
+  }
+
+  removeOrderservice =async (id: string) => {
+    const order_id = new Types.ObjectId(id);
+    const order = await Order.deleteOne({_id: order_id});
+    return order;
+    
   }
 };
 

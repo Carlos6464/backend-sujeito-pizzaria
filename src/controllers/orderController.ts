@@ -11,6 +11,14 @@ class orderController {
     })
 
     return res.status(201).json(order);
+  };
+
+  removeOrderController =async (req: Request, res: Response) => {
+    const order_id = req.query.order_id as string;
+
+    const removeorderservice = new orderSevice();
+    const order = await removeorderservice.removeOrderservice(order_id);
+    return res.status(200).json(order);
   }
 }
 
