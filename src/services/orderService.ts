@@ -39,7 +39,7 @@ class orderSevice {
     if(!order){
       throw new Error("Order não existe.")
     }
-    const newOrder = {id: order._id, status: order.status, draft: order.draft, name: order.name};
+    const newOrder = {status: order.status, draft: order.draft, name: order.name};
 
     const product = await Product.findById(productId); 
     if(!product){
@@ -82,6 +82,12 @@ class orderSevice {
     const order = await Item.find({}).where({orderId: order_id}).sort([["createdAt", -1]]).exec();
   
 
+    return order;
+  }
+
+  finishOrderService =async (id: string) => {
+    const order_id = new Types.ObjectId(id);
+    const order = await Order.updateOne({_id: order_id}, {status: true});
     return order;
   }
 };

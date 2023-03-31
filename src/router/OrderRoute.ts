@@ -21,6 +21,7 @@ routeOrder.delete('/item', authGuard, ordercontroller.removeItemController);
 routeOrder.put('/send', authGuard, ordercontroller.sendOrderController);
 routeOrder.get('/', authGuard, ordercontroller.listOrderController);
 routeOrder.get('/detail', authGuard, ordercontroller.detailOrderController);
+routeOrder.put('/finish', authGuard, ordercontroller.finishOrderController);
 
 
 

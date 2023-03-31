@@ -66,6 +66,15 @@ class orderController {
     const order = await detailorderservice.detailOrderService(order_id);
 
     res.status(200).json(order);
+  };
+
+  finishOrderController =async (req:Request, res: Response) => {
+    const {order_id} = req.body;
+
+    const finishorderservice = new orderSevice();
+    const order = await finishorderservice.finishOrderService(order_id)
+
+    res.status(200).json(order)
   }
 }
 
