@@ -41,7 +41,22 @@ class orderController {
     const item = await removeitemservice.removeItemService(item_id);
 
     res.status(200).json(item);
-    
+
+  }
+
+  sendOrderController =async (req: Request, res: Response) => {
+    const {order_id}  = req.body;
+
+    const sendorderservice = new orderSevice();
+    const order = await sendorderservice.sendOrderService(order_id)
+    res.status(200).json(order);
+  }
+
+  listOrderController =async (req: Request, res: Response) => {
+    const listorderservice = new orderSevice();
+    const orders = await listorderservice.listOrderService();
+
+    res.status(200).json(orders)
   }
 }
 

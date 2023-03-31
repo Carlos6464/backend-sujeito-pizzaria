@@ -58,6 +58,17 @@ class orderSevice {
     return item;
 
   }
+
+  sendOrderService =async (order_id: string) => {
+    const orderId = new Types.ObjectId(order_id)
+    const order = await Order.updateOne({_id: orderId}, {draft: false});
+    return order;
+  }
+
+  listOrderService =async () => {
+    const orders = await Order.find({}).where({status: false, draft: false}).sort([["createdAt", -1]]).exec()
+    return orders;
+  }
 };
 
 export {orderSevice}

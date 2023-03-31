@@ -18,6 +18,8 @@ routeOrder.post('/', authGuard, ordervalidation.createOrderValidation(), handlev
 routeOrder.delete('/', authGuard, ordercontroller.removeOrderController)
 routeOrder.post('/item', authGuard, ordervalidation.addItemValidation(), handlevalidation.validate, ordercontroller.addItemController);
 routeOrder.delete('/item', authGuard, ordercontroller.removeItemController);
+routeOrder.put('/send', authGuard, ordercontroller.sendOrderController);
+routeOrder.get('/', authGuard, ordercontroller.listOrderController);
 
 
 
