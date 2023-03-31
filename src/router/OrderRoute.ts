@@ -16,6 +16,8 @@ const handlevalidation = new handleValidation()
 
 routeOrder.post('/', authGuard, ordervalidation.createOrderValidation(), handlevalidation.validate, ordercontroller.createOrderController );
 routeOrder.delete('/', authGuard, ordercontroller.removeOrderController)
+routeOrder.post('/item', authGuard, ordervalidation.addItemValidation(), handlevalidation.validate, ordercontroller.addItemController);
+routeOrder.delete('/item', authGuard, ordercontroller.removeItemController);
 
 
 

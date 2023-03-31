@@ -1,8 +1,8 @@
-import { orderSevice } from "../services/OrderService";
+import { orderSevice } from "../services/orderService";
 import { Request, Response } from "express";
 
 class orderController {
-  createOrderController =async (req: Request, res:Response) => {
+  createOrderController = async (req: Request, res:Response) => {
     const {table, name} = req.body;
     const createrderservice = new orderSevice();
     const order = await createrderservice.createOrderService({
@@ -13,12 +13,35 @@ class orderController {
     return res.status(201).json(order);
   };
 
-  removeOrderController =async (req: Request, res: Response) => {
+  removeOrderController = async (req: Request, res: Response) => {
     const order_id = req.query.order_id as string;
 
     const removeorderservice = new orderSevice();
-    const order = await removeorderservice.removeOrderservice(order_id);
+    const order = await removeorderservice.removeOrderService(order_id);
     return res.status(200).json(order);
+  }
+
+  addItemController =async (req: Request, res: Response) => {
+    const {order_id,product_id, ammout} = req.body;
+
+    const additemservice = new orderSevice();
+    const itens = await additemservice.addItensService({
+      order_id,
+      product_id,
+      ammout  
+    })
+
+    res.status(201).json(itens);
+    
+  }
+
+  removeItemController =async (req: Request, res: Response) => {
+    const item_id = req.query.item_id as string;
+    const removeitemservice = new orderSevice();
+    const item = await removeitemservice.removeItemService(item_id);
+
+    res.status(200).json(item);
+    
   }
 }
 

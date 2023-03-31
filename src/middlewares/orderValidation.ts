@@ -10,6 +10,15 @@ class orderValidation {
           .optional()
     ]
   }
+
+  addItemValidation = () => {
+    return [
+      body("ammout")
+        .isInt()
+        .withMessage("A quantidade de itens é obrigátoria.") 
+    ]
+}
+
 }
 
 export {orderValidation}
