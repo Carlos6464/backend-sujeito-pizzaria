@@ -4,7 +4,7 @@ const orderSchema = new Schema(
   {
     table: Number,
     status:{type: Boolean, default: false},
-    draft: {type: Boolean, default: true},
+    draft:{type: Boolean, default: true},
     name: String
   },
   {

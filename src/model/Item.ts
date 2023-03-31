@@ -3,8 +3,10 @@ import mongoose,{Schema, Types} from "mongoose";
 const itemSchema = new Schema(
   {
     amount: Number,
-    productId: Types.ObjectId,
-    orderId: Types.ObjectId
+    orderId: Types.ObjectId,
+    product: Array,
+    order: Array
+ 
   },
   {
     timestamps: true

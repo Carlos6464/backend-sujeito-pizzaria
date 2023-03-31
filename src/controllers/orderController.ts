@@ -58,6 +58,15 @@ class orderController {
 
     res.status(200).json(orders)
   }
+
+  detailOrderController =async (req:Request, res:Response) => {
+    const order_id = req.query.order_id as string;
+
+    const detailorderservice = new orderSevice();
+    const order = await detailorderservice.detailOrderService(order_id);
+
+    res.status(200).json(order);
+  }
 }
 
 export { orderController};

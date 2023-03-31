@@ -35,20 +35,27 @@ class orderSevice {
     const orderId = new Types.ObjectId(order_id);
     const productId = new Types.ObjectId(product_id);
 
-    if(!await Order.findById(orderId)){
+    const order = await Order.findById(orderId)
+    if(!order){
       throw new Error("Order não existe.")
     }
+    const newOrder = {id: order._id, status: order.status, draft: order.draft, name: order.name};
 
-    if(!await Product.findById(productId)){
+    const product = await Product.findById(productId); 
+    if(!product){
       throw new Error("Product não existe.")
     }
+    const newProduct = {id: product._id, name: product.name, price: product.price, description: product.description, banner: product.banner, categoryId: product.categoryId}
+
 
     const item = await Item.create({
       amount: ammout,
-      orderId: orderId,
-      productId: productId
+      orderId: orderId
     })
+    item.order.push(newOrder)
+    item.product.push(newProduct)
 
+    await item.save();
     return item;
   }
 
@@ -68,6 +75,14 @@ class orderSevice {
   listOrderService =async () => {
     const orders = await Order.find({}).where({status: false, draft: false}).sort([["createdAt", -1]]).exec()
     return orders;
+  }
+
+  detailOrderService =async (id: string) => {
+    const order_id = new Types.ObjectId(id);
+    const order = await Item.find({}).where({orderId: order_id}).sort([["createdAt", -1]]).exec();
+  
+
+    return order;
   }
 };
 
