@@ -11,7 +11,6 @@
 
 ## :books: Funcionalidades - Pagina web disponivel na cozinha
 * <b>Adicionar uma categoria aos produtos disponiveis no cardapio</b>: No aplicativo do garçom tem todos os itens disponiveis no cardapio, porem quem ira cadastra o tipos de itens disponiveis no cardapio sera o pessoal responsavel pelos os produtos que sera o pessoal da cozinha, então esta opção dara a eles esta funcionalidade.
-* 
 
 ## :wrench: Tecnologias e bibliotecas utilizadas
 * NodeJs
@@ -28,6 +27,5 @@ Para rodar o repositório é necessário clonar o mesmo, dar o seguinte comando 
 ```
 <npm run dev>
 ```
-## :soon: Sugestões de Implementações futuras
 
 
